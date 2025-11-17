@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coffee Menu — Grid + Flex (with square images)</title>
+
+  <style>
+    
+    :root{
+      --bg: #f7f4ef;
+      --card: #ffffff;
+      --muted: #666;
+      --accent: #b8942c;
+      --gap: 22px;
+    }
+
+    *{box-sizing: border-box}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color:#222;
+      line-height:1.4;
+      padding:28px;
+    }
+
+    h1{
+      text-align:center;
+      margin: 0 0 18px 0;
+      font-size:24px;
+      letter-spacing:0.2px;
+    }
+
+    
+    .menu-container{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      gap: var(--gap);
+      max-width:1200px;
+      margin: 18px auto;
+      padding: 6px;
+    }
+
+   
+    .coffee-card{
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(17,17,17,0.06);
+      padding: 14px;
+      display: flex;              
+      gap: 14px;
+      align-items: center;
+      min-height: 110px;
+    }
+
+    
+    .coffee-img {
+      flex: 0 0 96px;            
+      height: 96px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #efe7dd 0%, #f7efe4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      box-shadow: inset 0 -4px 10px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    
+    .coffee-img.capp { background: linear-gradient(180deg,#f8efe6,#f2e3d5); }
+    .coffee-img.amer { background: linear-gradient(180deg,#eef7fb,#e6f0f5); }
+    .coffee-img.espresso { background: linear-gradient(180deg,#efe7dd,#f7efe4); }
+    .coffee-img.macchiato { background: linear-gradient(180deg,#fff7e6,#f6ecd8); }
+    .coffee-img.mocha { background: linear-gradient(180deg,#f3e6e6,#efe0df); }
+    .coffee-img.latte { background: linear-gradient(180deg,#f6f2ee,#f2ede8); }
+    .coffee-img.piccolo { background: linear-gradient(180deg,#f2f7ec,#e9f0df); }
+    .coffee-img.ristretto { background: linear-gradient(180deg,#efe8e3,#f6efea); }
+    .coffee-img.affogato { background: linear-gradient(180deg,#fff2e9,#f8e9dd); }
+
+   
+    .card-content{
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex:1;
+      min-width:0; 
+    }
+
+    .coffee-header{
+      display:flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .coffee-name{
+      font-weight: 700;
+      font-size: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .price{
+      color: var(--accent);
+      font-weight: 700;
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+
+    .coffee-desc{
+      margin-top:6px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .ingredients {
+      margin-top:10px;
+      font-size:13px;
+      color:#333;
+    }
+
+    
+    .ingredients ul {
+      margin:6px 0 0 14px;
+      padding:0;
+    }
+    .ingredients li { margin-bottom:4px; }
+
+    
+    @media (max-width: 900px){
+      .menu-container{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px){
+      .menu-container{ grid-template-columns: 1fr; padding: 6px; }
+      .coffee-card{ align-items: flex-start; gap:12px; padding:12px; }
+      .coffee-img{ flex-basis:72px; height:72px; font-size:26px; }
+      .coffee-name{ font-size:15px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Coffee Menu</h1>
+
+  <div class="menu-container">
+
+    
+    <article class="coffee-card" aria-labelledby="cap">
+      <div class="coffee-img capp" title="Cappuccino image">☕️</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="cap" class="coffee-name">Cappuccino</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">A balanced espresso-based drink with velvety milk foam.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>1 shot espresso</li>
+            <li>Steamed milk</li>
+            <li>Milk foam (thick)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    
+    <article class="coffee-card" aria-labelledby="ame">
+      <div class="coffee-img amer" title="Americano image">☕️</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="ame" class="coffee-name">Americano</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">Espresso diluted with hot water for a longer cup.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>1 shot espresso</li>
+            <li>Hot water (to taste)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    
+    <article class="coffee-card" aria-labelledby="esp">
+      <div class="coffee-img espresso" title="Espresso image">☕️</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="esp" class="coffee-name">Espresso</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">A short, concentrated coffee brewed by forcing hot water through finely-ground coffee.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>Finely ground coffee</li>
+            <li>High-pressure extraction (short shot)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    
+    <article class="coffee-card" aria-labelledby="mac">
+      <div class="coffee-img macchiato" title="Macchiato image">☕️</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="mac" class="coffee-name">Macchiato</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">An espresso 'stained' with a small amount of milk foam.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>1 shot espresso</li>
+            <li>Small spoon of milk foam</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    
+    <article class="coffee-card" aria-labelledby="moc">
+      <div class="coffee-img mocha" title="Mocha image">🍫</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="moc" class="coffee-name">Mocha</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">A chocolatey espresso drink often topped with whipped cream.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>Espresso</li>
+            <li>Chocolate syrup</li>
+            <li>Steamed milk</li>
+            <li>Whipped cream (optional)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    
+    <article class="coffee-card" aria-labelledby="lat">
+      <div class="coffee-img latte" title="Latte image">🥛</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="lat" class="coffee-name">Coffee Latte</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">Creamy and milky — more milk than espresso, topped with light foam.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>1 shot espresso</li>
+            <li>Steamed milk (more than cappuccino)</li>
+            <li>Thin layer of milk foam</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    
+    <article class="coffee-card" aria-labelledby="pic">
+      <div class="coffee-img piccolo" title="Piccolo Latte image">☕️</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="pic" class="coffee-name">Piccolo Latte</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">A small latte made with a ristretto shot and steamed milk in a small glass.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>Ristretto (short espresso)</li>
+            <li>Steamed milk (small)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    
+   
+    <article class="coffee-card" aria-labelledby="ris">
+      <div class="coffee-img ristretto" title="Ristretto image">⚫️</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="ris" class="coffee-name">Ristretto</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">A very short, concentrated espresso — intense and syrupy.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>Finely ground coffee</li>
+            <li>Less water than a normal espresso (shorter shot)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    
+    
+    <article class="coffee-card" aria-labelledby="aff">
+      <div class="coffee-img affogato" title="Affogato image">🍨</div>
+
+      <div class="card-content">
+        <div class="coffee-header">
+          <div id="aff" class="coffee-name">Affogato</div>
+          <div class="price">$49</div>
+        </div>
+
+        <p class="coffee-desc">A dessert-coffee: hot espresso poured over cold vanilla ice-cream.</p>
+
+        <div class="ingredients">
+          <strong>Ingredients</strong>
+          <ul>
+            <li>Vanilla ice cream (1 scoop)</li>
+            <li>Hot espresso (1 shot) poured on top</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+</body>
+</html>
